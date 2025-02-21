@@ -1,87 +1,106 @@
 
-/**
- * Custom CSS added here 
- */
- html {
+html {
   scroll-behavior: smooth;
 }
 
- body {
-  font-family: "Raleway", sans-serif;
-  background-color: #ffffff;
+body {
+  font-family: "Montserrat", serif;
+  font-style: normal;
+  background-image: url(../assets/background01beige.webp);
+  background-size: contain;
 }
+
 .container {
-  max-width: 100%;
-  height: 100vh;
-}
-
-.container > * {
-  display: flex;
-  place-content: center;
-  letter-spacing: 0.05rem;
-}
-
-a{
-  text-decoration: none;
-}
-
-.botonmenu{
-  pointer-events: none;
-filter: opacity(0);
-  font-size: 110%;
-  line-height: 0.15;
-  text-align: center;
-  color: white;
-margin: 2%;
-  z-index: 999;
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgb(255, 255, 255);
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.334);
-  box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-}
-.botonmenu p{
-  transform: scaleX(1.6) scale(3); 
-}
-
-.botonmenudesplegable {
-  padding-top: 30%;
-  font-size: 160%;
-  text-align: center;
-  z-index: 997;
-  position: fixed;
-  display: none; 
-  background-color: rgba(0, 0, 0, 0.674);
-  backdrop-filter: blur(5px);
   width: 100%;
   height: 100%;
 }
-.cerrar {
-  right: 0;
-  display: none; /* Inicialmente oculto */
+
+
+* {
+  text-decoration: none;
+  word-wrap: break-word;
+  line-height: 1.4;
+  color: rgb(78, 66, 84);
+  font-weight: bold;
+
+}
+* h2{
+  font-size: 200%;
+}
+* p{
+  font-size: 90%;
+}
+
+
+
+
+
+
+.botonmenu {
+  cursor: pointer;
+  pointer-events: none;
+  filter: opacity(0);
+  font-size: 110%;
   text-align: center;
   color: white;
-margin: 2%;
+  margin: 2%;
+  z-index: 999;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background-image: url(../assets/opciones.png);
+  background-size: cover;
+  background-color: rgb(148, 23, 215);
+}
+
+
+
+.botonmenudesplegable {
+  padding-top: 30%;
+  font-size: 120%;
+  text-align: center;
+  z-index: 997;
+  position: fixed;
+  display: none;
+  background-color: rgba(83, 23, 166, 0.715);
+  backdrop-filter: invert(1);
+  width: 100%;
+  height: 100%;
+}
+
+.cerrar {
+  cursor: pointer;
+  right: 0;
+  display: none;
+  text-align: center;
+  color: white;
+  margin: 2%;
   z-index: 999;
   position: fixed;
   width: 60px;
   height: 60px;
 }
-.cerrar p{
+
+.cerrar button {
+  cursor: pointer;
+  border: none;
+  background-color: rgba(240, 248, 255, 0);
+  color: white;
   padding-top: 20%;
-  transform: scale(2.2); 
+  transform: scale(2.2);
 }
 
 /* Animación de entrada (deslizamiento de izquierda a derecha) */
 @keyframes slideIn {
   from {
-    transform: translateX(-100%);
-    opacity: 50%;
+
+    opacity: 0%;
+    
   }
+
   to {
-    transform: translateX(0);
+
     opacity: 100%;
   }
 }
@@ -89,432 +108,1062 @@ margin: 2%;
 /* Animación de salida (deslizamiento de derecha a izquierda) */
 @keyframes slideOut {
   from {
-    transform: translateX(0);
     opacity: 1;
   }
+
   to {
-    transform: translateX(-100%);
     opacity: 0;
   }
 }
 
 /* Estado visible con animación de entrada */
 .botonmenudesplegable.show {
-  animation: slideIn 0.5s forwards; /* Aparece deslizándose */
+  animation: slideIn 0.5s forwards;
+  /* Aparece deslizándose */
 }
 
 /* Estado oculto con animación de salida */
 .botonmenudesplegable.hide {
-  animation: slideOut 0.2s forwards; /* Desaparece deslizándose */
+  animation: slideOut 0.5s forwards;
+  /* Desaparece deslizándose */
 }
 
 /* Para mostrar el botón de cerrar */
 .cerrar.show {
-  animation: slideIn 0.8s forwards;
+  animation: slideIn 1s forwards;
 }
 
 .cerrar.hide {
-  animation: slideOut 0.2s forwards;
+  animation: slideOut 0s forwards;
 }
-.botonmenudesplegable a{
 
-  border-bottom: 1px solid #ffffffab;
-  background-color: rgba(255, 255, 255, 0.195);
-  color: white;
+.botonmenudesplegable a {
+  font-weight: bold;
+  width: 100%;
+  border-bottom: 1px solid #ffffff75;
+  background-color: rgb(255, 255, 255);
+  color: rgb(88, 15, 119);
   display: block;
   line-height: 3;
+  
 }
 
-/*---------------WSSP-------------------*/
-.iconowssp{
-  border-radius: 50%;
-  right: 2%;
-  bottom: 5%;
-  z-index: 990;
+
+/*---------------------------------HEADER----------------------------------*/
+
+/* Capa oscura para todo el contenido excepto el navoculto */
+.overlay-filtro {
   position: fixed;
-  width: 80px;
-  height: 80px;
-  background-image: url(/assets/WhatsApp_icon.png);
-  background-size: cover;
-  transition: 0.3s ease;
-}
-.iconowssp:hover,
-.header a:hover,
-.footer a:hover{
-  transition: 0.3s ease;
-transform: scale(1.1);
-}
-
-
-/*---------------HEADER-------------------*/
-
-
-.header{
-  overflow: hidden;
-  box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.322);
-  z-index: 99;
-  display: flex;
-  position: fixed;
-  background-color: rgb(255, 255, 255);
-  width: 100%;
-  height: 120px;
-  transition: top 0.3s ease;
-}
-.logo{
-  position: absolute;
+  top: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* Transparente por defecto */
+  z-index: 998; /* Debajo del .navoculto */
+  pointer-events: none; /* No interfiere con clics */
+  transition: 0.5s ease;
+}
+
+/* Cuando el navoculto está activo, oscurece el fondo */
+.overlay-filtro.activo {
+  background-color: rgba(225, 0, 255, 0.415);
+  backdrop-filter: contrast(1) invert(1);
+
+}
+
+/* Asegurar que el navoculto siga por encima de la capa */
+.navoculto {
+  position: fixed;
+  z-index: 999;
+}
+
+
+.navoculto{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
   width: 300px;
   height: 100%;
-  background-color: yellowgreen;
-}
-.opcionesheader{
-  flex-wrap: wrap;
-display: flex;
-  position: absolute;
-  top:30%;
-  right: 5%;
-  background-color: rgb(255, 255, 255);
-}
-.header a{
-  font-weight: bold;
-  color: rgb(0, 0, 0);
-  padding: 20px;
-  font-size: 120%;
+background-color: rgb(110, 66, 176);
+left: -230px;
+transition: 0.5s ease;
+z-index: 999;
 }
 
-
-
-
-/*---------------BANNER-------------------*/
-.banner {
- background-image: url(/assets/wall2.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  color: hsl(0, 0%, 100%);
-  transition: 1s;
-}
-
-.titulo{
-  font-size: 180%;
-  text-align: center;
-  position: absolute;
-  bottom: 15%;
-  width: 90%;
-  background-color: tomato;
-}
-
-
-/*---------------WEB-------------------*/
-.web{
-  word-wrap: break-word;
-  text-align: center;
-  width: 100%;
- 
-  padding: 10% 15% 5% 15%;
-}
-
-.COPY{
-  background-color: rgb(0, 201, 137);
-  color: white;
-  padding: 20PX;
-}
-.marcas{
-  width: 100%;
-  padding: 2% 15% 2% 15%;
-  flex-wrap: wrap;
-  display: flex;
-  position: relative;
-}
-.marcaslogo{
-  background-size: cover;
-
-margin: 0% 1% 0% 1%;
-  width: 120px;
-  height: 80px;
-}
-/*---------------FOTTER-------------------*/
-.footer{
-  padding: 2% 15% 2% 15%;
-  flex-wrap: wrap;
-  display: flex;
-  position: relative;
-}
-.redes{
-  filter: opacity(50%);
-  background-size: cover;
-margin: 0% 1% 0% 1%;
+.botonopciones{
+  top: 45%;
   width: 50px;
   height: 50px;
+background-image: url(../assets/opciones.png);
+background-size: cover;
+  display: flex;
+  right: 10px;
+  position: absolute;
+  transition: 0.2s ease;
 }
-.redes:hover{
-filter: opacity(100%);
-}
-.redes2{
-  padding: 0% 15% 5% 15%;
-}
-
-.contacto{
-  padding: 5% 15% 0% 15%;
-}
-.contacto, .redes2, .footer{
-  color: white;
-  background-color: rgb(82, 82, 82);
+.navbar{
+  box-shadow: 48px 0px 96px 66px rgba(0, 0, 0, 0.321); 
+background-image: url(../assets/navbarbackground.webp);
+background-size: cover;
+  filter: opacity(0);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 100%;
+  height: 100%;
+  transition: 0.5s ease;
+}
+.navoculto:hover{
+  transition: 0.3s ease;
+  left: 0;
+}
+.navoculto:hover .navbar{
+  filter: opacity(100);
+  pointer-events: all;
+  transition: 0.3s ease;
+}
+.navoculto:hover .botonopciones{
+display: none;
+transition: 0.2s ease;
+}
+.opcionnavbar{
+  border-bottom: 1px solid #acacac45;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 60px;
+  transition: 0.2s ease;
+}
+
+
+.opcionnavbar p{
+  color: rgb(94, 44, 164);
+}
+.opcionnavbar:hover p{
+  color: rgb(255, 255, 255);
+}
+
+
+.opcionnavbar:hover{
+  box-shadow: 2px 19px 9px 0px rgba(0,0,0,0.54);
+background-color: rgb(150, 59, 198);
+  width: 115%;
+  padding-left: 20%;
+  filter: opacity(100%);
+  transition: 0.3s ease;
+  border-radius: 5px;
+}
+
+.logonavbar{
+filter: sepia(1) saturate(10) hue-rotate(250deg);
+  position: absolute;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 120px;
+  top: 25px;
+}
+.contenedorredes{
+padding: 0px 50px 0px 50px;
+  position: absolute;
+  bottom: 7%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+.contenedorredes .pestaña p{
+  text-shadow: none;
+  font-size: 120%;
+  color: rgb(113, 10, 165);
+}
+
+
+/*----------------------------------BANNER---------------------------------*/
+
+
+
+.bannerpresentacion{
+  display: flex;
+  width: 100%;
+ position: relative;
+  height: 100vh;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.bannerfondoanimacion{
+  transform: translateY(-50px);
+  width: 500px;
+  height: 300px;
+  position: absolute;
+  background-size: cover;
+
+  }
+  .bannerbotonmenu{
+    filter: brightness(0.3);
+    position: absolute;
+width: 10%;
+height: 20%;
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+bottom: 10%;
+transition: 0.3s;
+
+  }
+
+  .bannerbotonmenu:hover{
+    transform: scale(1.2);
+    animation: botonmenu 0.4s infinite;
+  }
+  @keyframes botonmenu{
+    0%{
+      background-image: url(../assets/boton02.webp);
+    }
+    35%{
+      background-image: url(../assets/boton03.webp);
+    }
+    75%{
+      background-image: url(../assets/boton04.webp);
+    }
+    100%{
+      background-image: url(../assets/boton01.webp);
+    }
+  }
+
+
+/* ----------------------------- SOBRE MI--------------------------*/
+  .bannersobremi{
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 600px;
+ background-image: url(../assets/SOBREMI.webp);
+ background-size: contain;
+ align-items: center;
+ justify-content: center;
+ display: flex;
+  }
+  .sobremiladoizquierdo{
+    position: relative;
+    width: 50%;
+    height: 100%;
+  }
+  .sobremifoto,
+  .sobremilogo{
+    background-position: right;
+width: 100%;
+position: absolute;
+height: 100%;
+background-size: contain;
+background-repeat: no-repeat;
+  }
+
+.sobremitexto{
+  padding: 30px 50px 50px 0px;
+  text-align:justify ;
+  width: 50%;
+  height: 50%;
+
+}
+
+
+
+/* -----------------------------HABILIDADES--------------------------*/
+
+.bannerhabilidades{
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.habilidadesdescripcion{
+  position: relative;
+padding: 5% 12% 5% 12%;
+width: 80%;
+text-align: center;
+}
+
+
+.programas {
+  background-position-x: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 5% 30%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+}
+
+.logoprogramas {
+  filter: sepia(1) saturate(3) hue-rotate(220DEG);
+  justify-content: center;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: background-image 0.3s ease; 
+}
+
+.logoprogramas:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  transition: 0.3S ease;
+  filter: none;
+}
+.pestaña {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  word-wrap: break-word;
+  pointer-events: none;
+position: absolute;
+transform: translateY(-60px) translateX(-15PX);
+width: 170px;
+height: 80px;
+z-index: 999;
+visibility: hidden;
+}
+.pestaña p{
+  color: white;
+  transform: rotate(-7deg);
+  font-family: "Just Me Again Down Here", serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 180% ;
+  text-shadow: 0px 0px 13px rgba(0,0,0,1);
+}
+.logoprogramas:hover > .pestaña{
+visibility: visible;
 }
 
-/*---------------------------SERVICIOS----------------------------*/
+/* -----------------------------ivrea-------------------------*/
+.bannerbotones{
 
-.serviciosweb{
-  padding: 15% 15% 5% 15%;
-}
-
-.serviciosopciones{
+background-image: url(../assets/bannerivrea.webp);
+background-size: cover;
   overflow: hidden;
   width: 100%;
-  height: 200px;
 }
-.tipodeservicio{
+.ivreadescripcion {
+  padding: 15% 25% 5% 25%;
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+}
+.boxesparg{
+  display: flex;
+  left: 50px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 
+}
+
+
+.opcionbanner{
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: auto;
-  position: relative;
-  background-size: cover;
-  color: white;
-width: 100%;
-  height: 100%;
-  overflow: hidden;
-  transition: 0.3s ease;
+  width: 450px;
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
-.tipodeservicio p{
-  text-shadow: 0px 0px 11px rgba(0,0,0,1);
+
+.vertomos{
+  cursor: pointer;
+  bottom: 50px;
+  width: 150px;
+  height: 70px;
+background-size: cover;
+  position: absolute;
+  transition: 0.2s ease;
+}
+.vertomos:hover{
+  transition: 0.2s ease;
+  transform: scale(1.2);
+  animation: vibra 0.2s;
+}
+@keyframes vibra{
+  0%{
+    transform: rotate(0deg) scale(1);
+  }
+  50%{
+    transform: rotate(7deg) scale(1.2);
+
+  }
+  100%{
+    transform: rotate(-5deg) scale(1.2);
+  }
+}
+
+.lineadivisoria{
+  width: 100%;
+  height: 100px;
+background-image: url(../assets/lineadivisoria.webp);
+background-size: contain;
+}
+
+
+
+/* -----------------------------remasterizacion y vectorizacion--------------------------*/
+
+
+
+.vesctorizacion{
+  position: relative;
+width: 100%;
+height: 100vh;
+}
+.vectortexto{
+  padding: 3% 20% 0% 20%;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+.vectorimagen{
+  gap: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+.imagenV{
+  background-size: cover;
 pointer-events: none;
   position: absolute;
-  z-index: 50;
-
+ width: 100%;
+ height:100%;
+transition: 1s ease;
 }
-.fondoservicio{
-  pointer-events: none;
-  background-size: cover;
-  position: absolute;
-  z-index: 40;
-  width: 100%;
-  height: 100%;
-  filter: brightness(0.6);
-  transition: 0.3s ease;
-}
-.tipodeservicio:hover   .fondoservicio{
-  transition: 0.3s ease;
-  transform: scale(1.1);
-  filter: brightness(1);
-} 
-
-
-.serviciosdesplegable {
-  overflow: hidden;
-  color: white;
+.imagencomic{
   position: relative;
-  display: flex;
-  padding: 5% 10% 5% 10%;
-  text-align: center;
-  word-wrap: break-word;
-  display: none;
-  width: 100%;
-  border-radius: 0px 0px 40px 40px;
-  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.679);
-}
-
-.contenedormuestras{
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 70px;
-  justify-content: center;
-}
-
-.muestras{
-  text-align: center;
-  position: relative;
-  width: 250px;
-  height: 250px;
-  margin: 25px;
-}
-.titulomuestras{
-  font-size: 120%;
-  padding-top: 40px;
-  left: 0;
-  width: 100%;
-  position: absolute;
-}
-.textomuestra{
-  padding: 0% 25%;
-  text-shadow: 0px 0px 9px rgba(0,0,0,1);
-  flex-wrap: wrap;
-  font-weight: bold;
-  font-size: 120%;
-  color: white;
-  pointer-events: none;
-  z-index: 10;
-  bottom: 15px;
-  width: 100%;
-  position: absolute;
-}
-.carta {
-  border-radius: 28px;
-  overflow: hidden;
-  display: flex;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;;
-}
-.carta:hover{
-  z-index: 9;
-}
-.fondotextura{
-
-
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 260px;
+  height:400px;
   z-index: 5;
 }
-.sombra{
+.imagencomic:hover{
+  z-index: 6;
+  transition: 1s;
+}
 
-  position: absolute;
+.imagencomic:hover .imagenV:nth-child(1) {
+  transform: translateX(-10px)translateY(-10px) scale(0.9);
+  transition: 1s ease;
+}
+
+.imagencomic:hover .imagenV:nth-child(2) {
+  transform: translateX(70px)translateY(20px)scale(0.95);
+  transition: 1s ease;
+}
+
+.imagencomic:hover .imagenV:nth-child(3) {
+  transform: translateX(150px) translateY(50px);
+  transition: 1s ease;
+}
+.imagenV:nth-child(4){
+  filter: opacity(0);
+}
+.imagencomic:hover .imagenV:nth-child(4) {
+filter: opacity(1);
+  transition: 1s ease;
+}
+/* -----------------------------PACKAGING-------------------------*/
+.bannertrabajos{
+  position: relative;
+  padding-top: 100px;
+  flex-direction: column;
+  display: flex;
+align-items: center;
+  width: 100%;
+}
+.contenedortarjetas{
+  margin-top: 40px;
+  justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tarjetastrabajos{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  cursor: pointer;
+  overflow: hidden;
+  width: 750px;
+  height: 300px;
+  z-index: 6;
+  background-size: cover;
+  background-image: url(../assets/BOX_JUNJI_ITO/fotterjunjiito.webp);
+}
+
+
+
+.bannertrabajosdesplegable {
+  background-color: white;
+  padding: 50px;
+  overflow: hidden;
+  justify-content: center;
+  display: none;
+  margin: 30px;
+
+
+}
+.item1,.item2,.item3,.item4,.item5,.item6,.item7{
+background-size: contain;
+background-repeat: no-repeat;
+transition: 0.5s ease;
+}
+.item2:hover,.item4:hover{
+transform: scale(1.05);
+transition: 0.6s ease;
+  }
+  .item3:hover{
+      transform: translateY(-30px) scale(1.05);
+      transition: 0.6s ease;
+  }
+.item1 {
+  display: flex;
+  justify-content: end;
+  grid-column: 1 / 2; /* Ocupa la primera columna */
+  grid-row: 1 / span 3; /* Ocupa las tres filas de la primera columna */
+  background-image: url(../assets/BOX_JUNJI_ITO/boxfrenteZOOM.webp);
+}
+
+.item2 {
+  grid-column: 2 / 3; /* Segunda columna */
+  grid-row: 1 / 2; /* Primera fila */
+  background-image: url(../assets/BOX_JUNJI_ITO/boxBACK.webp);
+}
+
+.item3 {
+  transform: translateY(-30px);
+  grid-column: 2 / 3; /* Segunda columna */
+  grid-row: 2 / 3; /* Segunda fila */
+  background-image: url(../assets/BOX_JUNJI_ITO/boxfrente.webp);
+}
+
+.item4 {
+  grid-column: 2 / 3; /* Segunda columna */
+  grid-row: 3 / 4; /* Tercera fila */
+  background-image: url(../assets/BOX_JUNJI_ITO/boxOPEN.webp);
+}
+
+.item2:hover ~ .item1 {
+  background-image: url(../assets/BOX_JUNJI_ITO/boxBACKZOOM.webp);
+}
+
+
+.item3:hover ~ .item1 {
+  background-image: url(../assets/BOX_JUNJI_ITO/boxfrenteZOOM.webp);
+}
+
+.item4:hover ~ .item1 {
+  background-image: url(../assets/BOX_JUNJI_ITO/boxOPENZOOM.webp);
+}
+
+.item5 {
+  grid-column: 1 / 3; 
+  grid-row: 4 / 5; 
+  background-image: url(../assets/lineadivisoria.webp);
+  filter: hue-rotate(30deg);
+  transform: translateY(20px);
+}
+
+.item6 {
+  grid-column: 1 / 3; 
+  grid-row: 5 / 6; 
+  background-image: url(../assets/BOX_JUNJI_ITO/diagramaBOX01.webp);
+
+}
+
+.item7 {
+  grid-column: 1 / 3; /* Segunda columna */
+  grid-row: 6 / 7; /* Tercera fila */
+  background-image: url(../assets/BOX_JUNJI_ITO/diagramaBOX02.webp);
+
+}
+.item8 {
+  grid-column: 1 / 3; /* Segunda columna */
+  grid-row: 7 / 8; /* Tercera fila */
+  background-color: rgb(20, 145, 116); /* Solo para diferenciar */
+}
+
+
+.bannertrabajosdesplegable.show {
+  display: grid;
+  
+}
+
+
+/*------------------------------------cartas holograficas------------------------------------*/
+
+
+
+.medio,
+.circle1,
+.circle2,
+.arriba,
+.sombra{
+  pointer-events: none;
+}
+
+
+.fondo-rainbow,
+.medio,
+.sombra,
+.arriba,
+.carta{
   width: 100%;
   height: 100%;
+}
+
+.carta,
+.fondo-rainbow,
+.medio,
+.arriba,
+.sombra,
+.main-container,
+.circle1,
+.circle2{
+  position: absolute;
+}
+
+.carta,
+.main-container{
+overflow: hidden;
+}
+.carousel-item {
+  margin: 20px;
+  width: 180px;
+  height: 260px;
+  position: relative;
+  z-index: 0;
+}
+.carousel-item:hover{
+  z-index: 99;
+}
+.carta {
+  cursor:pointer;
+  border-radius: 4px;
+transition: 0.18s ease;
+}
+.carta:hover{
+animation: carta 0.8s;
+}
+.carta::before {
+  content: "";
+  position: absolute;
+  top: 140px;
+  left: -200%; 
+  width: 420px; 
+  box-shadow: 0px 0px 18px 14px rgba(255, 255, 255, 0.613);
+  transform: rotate(-45deg);
+  animation: none; 
+  z-index: 6;
+}
+
+.carta:hover::before {
+  animation: destello 0.8s; 
+}
+
+@keyframes destello {
+  from {
+    left: 100%; 
+  }
+  to {
+    left: -200%; 
+  }
+}
+@keyframes carta {
+  from {
+    filter:  saturate(1.5) contrast(2);
+  }
+}
+
+
+.fondo-rainbow{
+  z-index: 1;
+  background: linear-gradient(45deg, rgba(0,255,76,1) 0%, rgba(255,0,228,1) 49%, rgba(0,202,255,1) 71%, rgba(255,248,0,1) 100%);
+}
+
+.medio {z-index: 2;}
+.arriba {z-index: 4;}
+.sombra {z-index: 6;}
+
+
+
+
+.circle1 {
+  /*---------------LUZ SUAVE-------------------*/
+  box-shadow: 0px 0px 80px 80px rgba(255, 255, 255, 0.649);
+  z-index: 3;
+}
+
+
+.circle2 {
+  /*---------------REFLEJO VENTANA-------------------*/
+  box-shadow: 0px 0px 100px 100px rgba(255, 255, 255, 0.386);
   z-index: 7;
 }
 
-.circle1 {/*---------------LUZ SUAVE-------------------*/
-  position: absolute;
+.circle1,
+.circle2{
   border-radius: 50%;
-  box-shadow: 0px 0px 100px 100px rgb(255, 255, 255);
-  z-index: 6;
+  transform: translate(-100px, -100px); 
 }
-.circle2 {/*---------------SATINADO-------------------*/
+
+
+
+/*-------------------------------------------------------------------*/
+/*--------------------------INFORMACIÓN DE LA CARTA-----------------------------------------*/
+
+.info {
+  color: white;
+  width: 100%;
+  height: 100%;
+pointer-events: none;
+  z-index: 9999999999999999;
+opacity: 0; 
+transition: opacity 0.5s;
   position: absolute;
-filter: brightness(2);
-  background-image: url(/assets/reflejoVENTANAsatinado.png);
-  background-size: cover;
-  width: 550PX;
-  height: 510PX;
-  z-index: 6;
-transform: translate(-250px, -220px);
 }
-.circle3 {/*---------------REFLEJO VENTANA-------------------*/
+.subinfo{
+  display: inline-flex;
+  width: 100%;
+  height: 20%;
+  text-align: left;
+}
+.infotitulo{
+  font-family: Arial, Helvetica, sans-serif;
+margin-bottom: 15%;
+  text-align: center;
+}
+
+.fotoprograma{
+  background-size: cover;
+  border-radius: 10PX;
+width: 45px;
+height: 45px;
+}
+.infodescripcion {
+  padding-left: 5%;
+}
+.infodescripcion h3{
+  font-weight: lighter;
+font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }
+.infodescripcion p{
+  color: white;
+font-size: 60%;
+}
+
+.mostrar {
+  opacity: 1;
+}
+
+.planonegro{
+  width: 100%;
+  height: 100%;
+  background-color: #000000b6;
+}
+
+/*-------------------------------------------------------------------*/
+
+/*-------------------------------------------------------------------*/
+
+.galeriacarrouse{
+background-image: url(../assets/galeriacartasbackground.webp);
+background-size: contain;
+position: relative;
+  visibility: hidden;  
+  z-index: 900;
+overflow: hidden;
+width: 100%;
+height: 500px;
+
+display: none;   
+}
+.galeriacarrouse.show {
+ display: block;         
+  visibility: visible; 
+  }
+
+.galeriacarrouse:hover > .titulocarru{
+  filter: opacity(0%);
+  transition: 0.5s;
+}
+
+.titulocarru{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+text-align: center;
+font-family: 'Oxygen', sans-serif;
+letter-spacing: 0.3em;
+text-shadow: 0px 0px 15px rgb(0, 0, 0);
+  pointer-events: none;
+  font-size: 120%;
   position: absolute;
-filter: brightness(2);
-  background-image: url(/assets/reflejoVENTANA.png);
-  background-size: cover;
-  width: 550PX;
-  height: 510PX;
-  z-index: 6;
-transform: translate(-250px, -220px);
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
 }
-/*---------------MEDIA-------------------*/
-@media only screen and (max-width: 850px) {
+
+.carrusel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-mask-image: linear-gradient(to right, transparent, rgb(0, 0, 0) 20%, rgb(0, 0, 0) 80%, transparent);
+  filter: blur(4px);
+width: 100%;
+height: 100%;
+transition: 1s ease;
+}
+.carrusel-container:hover{
+filter: blur(0px);
+  transition: 1s ease;
+}
+
+
+
+.carrusel {
+  margin-left: 30%;
+  position: absolute;
+  z-index: 500;
+  display: flex;
+  transition: transform 0.5s ease;
+  animation: aparecer 2s;
+}
+@keyframes aparecer{
+  0%{
+    transform: translateX(-100px);
+    filter: opacity(0);
+  }
+  100%{
+    filter: opacity(1);
+  }
+}
+
+
+.arrow {
+  background-color: rgba(0, 0, 0, 0);
+background-image: url(../assets/logoprograma24.webp);
+  background-size: cover;
+  border: none;
+  width: 300px;
+  height: 100%;
+  z-index: 999999;
+  filter: blur(1PX);
+  position: absolute;
+  font-size: 6em;
+  transition: 0.3s ease;
+
+}
+.arrow:hover{
+  filter: blur(0PX);
+  z-index: 9998;
+  cursor: pointer;
+transition: 0.3s ease;
+
+}
+
+
+.left-arrow {  
+  text-align: end;
+  left: -10px;
+  transform: scaleX(-1);
+}
+
+.right-arrow {
+  text-align: start;
+  right: -10px;
+}
+
+.arrow:hover{
+  animation: flechas 0.3s infinite;
+  transform: scale(1.2);
+}
+.left-arrow:hover{
+  transform: scaleX(-1) scale(1.2);
+}
+@keyframes flechas{
+  0%{
+    background-image: url(../assets/logoprograma24.webp);
+  }
+  25%{
+    background-image: url(../assets/logoprograma24b.webp);
+  }
+  50%{
+    background-image: url(../assets/logoprograma24c.webp);
+  }
+  75%{
+    background-image: url(../assets/logoprograma24d.webp);
+  }
+}
+
+
+/*-------------------------------------FOTTER------------------------------------*/
+
+
+
+.fottercontainer{
+width: 100%;
+height: 500PX;
+background-color: rgba(137, 43, 226, 0.196);
+}
+
+
+
+/*---------------------------------MEDIA----------------------------------*/
+
+@media only screen and (max-width: 850px){
+
+  * h2{
+    font-size: 150%;
+  }
 
   .header{
-    position: static;
-    display: flex;
-    justify-content: center;
-
-    height: 15%;
-  }
-  .logo{
-    position: relative;
-    width: 300px;
-    height: 100%;
-    background-color: yellowgreen;
+display: flex;
+flex-wrap: wrap;
   }
 
-  .opcionesheader{
-display: none;
-  }
-
-
-  .redes{
-  margin: 8% 5% 5% 5%;
-  }
-  .redes2{
-    display: block;
-    line-height: 1.5;
- font-size: 130%;
- padding: 0% 15% 10% 15%;
-  }
-
-  .iconowssp{
-    right: 4%;
-    bottom: 4%;
-  }
-  .COPY{
-    background-color: rgb(0, 201, 137);
-    color: white;
-    padding: 60PX;
-  }
-  .contacto{
-    padding: 10% 15% 0% 15%;
-  }
-  .botonmenu{
-    pointer-events: all;
-filter: opacity(1);
-
-  }
-  .serviciosweb{
-    position: relative;
-    padding: 15%;
-  }
-  .marcas{
-    padding: 10% 10% 10% 10%;
-  }
-  .marcaslogo{
-    background-size: cover;
-  margin: 0% 1% 0% 1%;
-    width: 70px;
-    height: 47px;
-  }
-
-  .serviciosopciones{
-    display: block;
-    overflow: hidden;
+  .descripcion{
+    position: absolute;
     width: 100%;
-    height: 400px;
+    height: 50%;
+bottom: 0;
   }
-  .tipodeservicio{
-    height: 100px;
+  .foto{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+top: 0;
   }
-  .tipodeservicio p{
-    font-size: 120%;
+  .botonmenu {
+    pointer-events: all;
+    filter: opacity(1);
+
   }
-  .contenedormuestras{
-    padding-bottom: 50PX;
+  .navoculto{
+    display: none;
+  }
+    /* ----------------------------- BANNER--------------------------*/
+
+  .bannerfondoanimacion{
+    width: 400PX;
+    height: 300PX;
+    background-size: contain;
+    background-repeat: no-repeat;
+  
+    }
+    .bannerbotonmenu{
+  width: 30%;
+  height: 20%;
+  bottom: 20%;
+    }
+  
+    /* ----------------------------- SOBRE MI--------------------------*/
+  .bannersobremi{
+    width: 100%;
+    height: 100vh;
+ background-image: url(../assets/);
+ background-size: contain;
+ align-items: center;
+ justify-content: center;
+ display: flex;
+ flex-direction: column;
+  }
+  .sobremiladoizquierdo{
+    position: relative;
+    width: 100%;
+    height: 50%;
+  }
+  .sobremifoto,
+  .sobremilogo{
+width: 90%;
+position: absolute;
+height: 100%;
+background-size: contain;
+background-repeat: no-repeat;
+  }
+
+.sobremitexto{
+  position: relative;
+  padding: 0px 10% 0px 10%;
+  font-size: 95%;
+  text-align:center;
+  width: 100%;
+  height: 50%;
+  line-height: 1.4;
+}
+
+    /* ----------------------------- HABILIDADES--------------------------*/
+
+  .bannerhabilidades{
+    height: 100vh;
+  font-size: 90%;
+  }
+  .habilidadesdescripcion{
+  width: 90%;
+  }
+
+  .programas {
+    padding: 5% 20%;
+
+  
   }
   
-  .muestras{
-    width: 100%;
-    height: 150px;
-    margin: 15px;
+  .logoprogramas {
+    width: 50px;
+    height: 50px;
+    margin: auto;
   }
-  .textomuestra{
-    padding: 0% 0%;
-    font-weight: bold;
-    font-size: 100%;
-
-    bottom: 15px;
-  }
-  .circle2, .circle3{
-    width: 800PX;
-    height: 610PX;
-    transform: translate(-400px, -220px);
-  }
+      /* ----------------------------- vectorizacion-------------------------*/
+      .imagencomic:nth-child(2) {
+    display: none;
+      }
+ 
+      .imagencomic:hover .imagenV:nth-child(1) {
+        transform: translateX(-50px)translateY(-10px) scale(0.9);
+        transition: 1s ease;
+      }
+      
+      .imagencomic:hover .imagenV:nth-child(2) {
+        transform: translateX(30px)translateY(20px)scale(0.95);
+        transition: 1s ease;
+      }
+      
+      .imagencomic:hover .imagenV:nth-child(3) {
+        transform: translateX(80px) translateY(50px);
+        transition: 1s ease;
+      }
+      
 }
