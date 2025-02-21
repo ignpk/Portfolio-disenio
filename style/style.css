@@ -31,8 +31,19 @@ body {
   font-size: 90%;
 }
 
-
-
+.CV{
+  right: 40PX;
+  bottom: 40PX;
+  z-index: 99;
+  position: fixed;
+background-image: url(../assets/CV.webp);
+background-size: cover;
+transform: scale(1.2);
+}
+.CV .pestaña p{
+font-size: 130%;
+  color: blueviolet;
+}
 
 
 
@@ -550,6 +561,7 @@ height: 100vh;
   justify-content: center;
   width: 100%;
   position: relative;
+
 }
 .imagenV{
   background-size: cover;
@@ -1037,7 +1049,9 @@ transition: 0.3s ease;
 .fottercontainer{
 width: 100%;
 height: 500PX;
-background-color: rgba(137, 43, 226, 0.196);
+background-image: url(../assets/enconstruccion.webp);
+background-position-x: center;
+background-repeat: no-repeat;
 }
 
 
@@ -1049,6 +1063,14 @@ background-color: rgba(137, 43, 226, 0.196);
   * h2{
     font-size: 150%;
   }
+
+
+  .CV{
+    right: 20PX;
+    bottom: 20PX;
+  background-image: url(../assets/CV.webp);
+  }
+
 
   .header{
 display: flex;
@@ -1146,7 +1168,52 @@ background-repeat: no-repeat;
     height: 50px;
     margin: auto;
   }
+
+
+   /* ----------------------------- IVREA------------------------*/
+   .bannerbotones{
+
+    background-image: url(../assets/);
+    background-size: contain;
+      width: 100%;
+    }
+    .ivreadescripcion {
+      padding: 10%;
+      line-height: 1.4;
+      text-align: center;
+      width: 100%;
+    }
+   .boxesparg{
+    background-color: rgba(255, 0, 0, 0.5);
+    left: 0;
+
+  }
+  
+  
+  .opcionbanner{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    height: 250px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .vertomos{
+    cursor: pointer;
+    bottom: 50px;
+    width: 150px;
+    height: 70px;
+  background-size: cover;
+    position: relative;
+    transition: 0.2s ease;
+  }
+
+
       /* ----------------------------- vectorizacion-------------------------*/
+      
       .imagencomic:nth-child(2) {
     display: none;
       }
@@ -1162,8 +1229,21 @@ background-repeat: no-repeat;
       }
       
       .imagencomic:hover .imagenV:nth-child(3) {
-        transform: translateX(80px) translateY(50px);
+        transform: translateX(50px) translateY(50px);
         transition: 1s ease;
+      }
+      
+      /* ----------------------------- PACKAGING------------------------*/
+
+      .tarjetastrabajos{
+        position: relative;
+
+        justify-content: center;
+        width: 200PX;
+        height: 300px;
+        z-index: 6;
+        background-size: cover;
+        background-image: url(../assets/BOX_JUNJI_ITO/fotterjunjiito.webp);
       }
       
 }
