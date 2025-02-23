@@ -154,10 +154,19 @@ document.querySelectorAll(".tarjetastrabajos").forEach((tarjeta) => {
 
 /*--------------------------------------efecto holografdico 3d---------------------------------------*/
 
-/*--------------------------------------efecto holográfico 3D---------------------------------------*/
-
 document.addEventListener("DOMContentLoaded", function() { 
   const cartas = document.querySelectorAll(".carta");
+  const isMobile = window.innerWidth < 600;
+  let useGyroscope = false;
+
+  // Verifica si el dispositivo tiene giroscopio
+  if (isMobile && "DeviceOrientationEvent" in window) {
+    DeviceOrientationEvent.requestPermission?.().then(response => {
+      if (response === "granted" || !DeviceOrientationEvent.requestPermission) {
+        useGyroscope = true;
+      }
+    }).catch(console.error);
+  }
 
   function aplicarEfectos(elemento) {
     const circleClasses = (elemento.getAttribute("data-circle") || "circle").split(/[\s,]+/);
@@ -168,75 +177,50 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     const fondoRainbow = elemento.querySelector(".fondo-rainbow");
-    let lastPositionX = 0;
-    let lastPositionY = 0;
-    let accumulatedY1 = 0;
-    let accumulatedY2 = 0;
+    let lastPositionX = 0, lastPositionY = 0, accumulatedY1 = 0, accumulatedY2 = 0;
 
-    const moverLineas = (e) => {
+    const moverConGiroscopio = (event) => {
+      const { gamma, beta } = event;
+      const xAxis = gamma / 4; // Rotación en eje Y
+      const yAxis = -beta / 4; // Rotación en eje X
+      aplicarTransformaciones(elemento, xAxis, yAxis);
+    };
+
+    const moverConMouseOTouch = (e) => {
       const isTouchEvent = e.type.includes("touch");
       const clientX = isTouchEvent ? e.touches[0].clientX : e.clientX;
       const clientY = isTouchEvent ? e.touches[0].clientY : e.clientY;
-
       const rect = elemento.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
-
       const xAxis = (centerX - clientX) / 10;
       const yAxis = -(centerY - clientY) / 10;
+      aplicarTransformaciones(elemento, xAxis, yAxis);
+    };
 
+    const aplicarTransformaciones = (elemento, xAxis, yAxis) => {
       elemento.style.transform = `perspective(800px) rotateX(${yAxis}deg) rotateY(${xAxis}deg) scale(1.5)`;
-
-      // Aplicar box-shadow
-      const shadowX = (clientX - rect.left - rect.width / 2) / 8;
-      const shadowY = (clientY - rect.top - rect.height / 2) / 25;
-      elemento.style.boxShadow = `${shadowX}px ${shadowY}px 5px rgba(0, 0, 0, 0.3)`;
-
-      const circles = elemento.querySelectorAll("div[class^='circle']");
-      circles.forEach(circle => {
-        circle.style.left = `${clientX - rect.left}px`;
-        circle.style.top = `${clientY - rect.top}px`;
-      });
-
-      const deltaX = clientX - lastPositionX;
-      const deltaY = clientY - lastPositionY;
-      lastPositionX = clientX;
-      lastPositionY = clientY;
-
-      const totalDelta = deltaX + deltaY;
-      accumulatedY1 += totalDelta;
-      accumulatedY2 -= totalDelta;
-
-      const hueValue = (clientX + clientY) % 360;
-      fondoRainbow.style.filter = `saturate(2) hue-rotate(${hueValue}deg)`;
-
-      const effectContainers = elemento.querySelectorAll('.efectoholograficolineas');
-      effectContainers.forEach((container, idx) => {
-        const lines1 = container.querySelectorAll('.line-container:first-of-type .line');
-        lines1.forEach((line, index) => {
-          const offset = (index + 1) * (idx + 2);
-          line.style.transform = `translateY(${accumulatedY1 / offset}px)`;
-        });
-
-        const lines2 = container.querySelectorAll('.line-container:last-of-type .line');
-        lines2.forEach((line, index) => {
-          const offset = (index + 1) * (idx + 2);
-          line.style.transform = `translateY(${accumulatedY2 / offset}px)`;
-        });
-      });
+      elemento.style.boxShadow = `${xAxis * 2}px ${yAxis * 2}px 5px rgba(0, 0, 0, 0.3)`;
     };
 
     const startInteraction = () => {
-      elemento.addEventListener("mousemove", moverLineas);
-      elemento.addEventListener("touchmove", moverLineas);
+      if (useGyroscope) {
+        window.addEventListener("deviceorientation", moverConGiroscopio);
+      } else {
+        elemento.addEventListener("mousemove", moverConMouseOTouch);
+        elemento.addEventListener("touchmove", moverConMouseOTouch);
+      }
     };
 
     const stopInteraction = () => {
-      elemento.removeEventListener("mousemove", moverLineas);
-      elemento.removeEventListener("touchmove", moverLineas);
+      if (useGyroscope) {
+        window.removeEventListener("deviceorientation", moverConGiroscopio);
+      } else {
+        elemento.removeEventListener("mousemove", moverConMouseOTouch);
+        elemento.removeEventListener("touchmove", moverConMouseOTouch);
+      }
       elemento.style.transform = "rotateY(0deg) rotateX(0deg)";
       elemento.style.boxShadow = "none";
-      fondoRainbow.style.filter = "saturate(10)";
     };
 
     elemento.addEventListener("mouseenter", startInteraction);
