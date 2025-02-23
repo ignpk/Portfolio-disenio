@@ -253,19 +253,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /*------------------------------------carrousel de libros-----------------------------------------*/
 document.addEventListener('DOMContentLoaded', function () {
-  const carruseles = document.querySelectorAll('.carrusel-container');
-
   function setupCarrusel(container) {
     const carrusel = container.querySelector('.carrusel');
     const leftArrow = container.querySelector('.left-arrow');
     const rightArrow = container.querySelector('.right-arrow');
     let currentIndex = 0;
-
-    // Ajuste para centrar el carrusel al cargar
-    if (carrusel.children.length > 0) {
-      currentIndex = Math.floor((carrusel.children.length - 1) / 2);
-      updateTransform();
-    }
 
     function updateTransform() {
       carrusel.style.transform = `translateX(-${currentIndex * 10}vw)`;
@@ -293,7 +285,32 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  carruseles.forEach(setupCarrusel);
+  function initCarruseles() {
+    const carruseles = document.querySelectorAll('.carrusel-container');
+    if (window.innerWidth >= 800) {
+      carruseles.forEach(container => {
+        const carrusel = container.querySelector('.carrusel');
+        const leftArrow = container.querySelector('.left-arrow');
+        const rightArrow = container.querySelector('.right-arrow');
+        if (carrusel) carrusel.style.transform = '';
+        if (leftArrow) leftArrow.style.display = '';
+        if (rightArrow) rightArrow.style.display = '';
+        setupCarrusel(container);
+      });
+    } else {
+      carruseles.forEach(container => {
+        const carrusel = container.querySelector('.carrusel');
+        const leftArrow = container.querySelector('.left-arrow');
+        const rightArrow = container.querySelector('.right-arrow');
+        if (carrusel) carrusel.style.transform = 'none';
+        if (leftArrow) leftArrow.style.display = 'none';
+        if (rightArrow) rightArrow.style.display = 'none';
+      });
+    }
+  }
+
+  initCarruseles();
+  window.addEventListener('resize', initCarruseles);
 });
 
 /*-----------------------------------------------------------------------------*/
